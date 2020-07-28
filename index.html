@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>reveal.js - Auto Animate</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../dist/reveal.css">
+	<link rel="stylesheet" href="../dist/theme/black.css" id="theme">
+	<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+
+	<style>
+		section>section {
+			margin-top: 1.5em;
+		}
+
+		.stacked {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			background-size: cover;
+			height: 300px;
+			width: 200px;
+		}
+
+		.galleryContainer {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			margin-top: 1.5em;
+		}
+
+		.galleryImage {
+			height: 300px;
+			width: 25%;
+			margin-left: 1em;
+			margin-bottom: 1em;
+		}
+
+		.galleryImage>* {
+			background-size: cover;
+			height: 100%;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		.filmCarrier {
+			background-color: #000;
+			border-top: 1px solid #333;
+			border-bottom: 1px solid #333;
+			width: 200%;
+			transform: translateX(-25%);
+			overflow: hidden;
+		}
+
+		.filmDots {
+			width: 100%;
+			border-top: 6px dashed #333;
+			border-bottom: 6px dashed #333;
+			transform: scaleY(2);
+			margin: 11px;
+			height: 0;
+		}
+
+
+		.filmItems {
+			display: flex;
+			overflow: hidden;
+			margin: 0;
+			padding: 0;
+			margin-left: -50px;
+			border-top: 1px solid #333;
+			border-bottom: 1px solid #333;
+		}
+
+		.filmItems>* {
+			border-left: #000 3px solid;
+			height: 150px;
+			background-size: cover;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section>
+				<h1>imageStacker Docs</h1>
+			</section>
+
+			<section>
+				<h1>StackImage</h1>
+				<section data-background-image="assets/stackImage1.png" data-background-size="cover">
+				</section>
+				<section>
+					<h3>From Timelapse</h3>
+					<div>
+						<div class="stacked" style="background-image: url(assets/image1.jpg);">
+							<div class="stacked" style="background-image: url(assets/image1.jpg);">
+								<div class="stacked" style="background-image: url(assets/image1.jpg);">
+								</div>
+							</div>
+						</div>
+					</div>
+					<pre data-id="code">
+						<code class="hljs" data-trim>
+							> stackImage 
+								--inputFolder=./my-awesome-timelapse 
+								--outputFile=stackedTimelapse 
+								--outputFolder=.
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>From Video</h3>
+					<pre data-id="code">
+						<code data-line-numbers class="hljs" data-trim>
+							ffmpeg -i ...
+						</code>
+					</pre>
+				</section>
+
+
+				<section data-auto-animate data-auto-animate-unmatched="fade">
+					<div class="galleryContainer">
+						<a class="galleryImage" href="assets/stackImage/1.jpg">
+							<div style="background-image:url('assets/stackImage/1.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/2.jpg">
+							<div style="background-image:url('assets/stackImage/2.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/3.jpg">
+							<div style="background-image:url('assets/stackImage/3.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/4.jpg">
+							<div style="background-image:url('assets/stackImage/4.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/5.jpg">
+							<div style="background-image:url('assets/stackImage/5.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/6.jpg">
+							<div style="background-image:url('assets/stackImage/6.jpg')"></div>
+						</a>
+					</div>
+				</section>
+				<section data-auto-animate data-auto-animate-unmatched="fade">
+					<div class="galleryContainer">
+						<a class="galleryImage" href="assets/stackImage/7.jpg">
+							<div style="background-image:url('assets/stackImage/7.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/8.jpg">
+							<div style="background-image:url('assets/stackImage/8.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/9.jpg">
+							<div style="background-image:url('assets/stackImage/9.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/10.jpg">
+							<div style="background-image:url('assets/stackImage/10.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/11.jpg">
+							<div style="background-image:url('assets/stackImage/11.jpg')"></div>
+						</a>
+						<a class="galleryImage" href="assets/stackImage/12.jpg">
+							<div style="background-image:url('assets/stackImage/12.jpg')"></div>
+						</a>
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<h1>StackContinuous</h1>
+				<section data-background-video="assets/continuous.webm" data-background-video-loop="true"
+					data-background-size="cover" data-background-video-muted="true"></section>
+				<section>
+					<h3>From Timelapse</h3>
+					<div class="filmCarrier">
+						<div class="filmDots"></div>
+						<div class="filmItems">
+							<img src="assets/stackContinuous/1.jpg">
+							<img src="assets/stackContinuous/2.jpg">
+							<img src="assets/stackContinuous/3.jpg">
+							<img src="assets/stackContinuous/4.jpg">
+							<img src="assets/stackContinuous/5.jpg">
+							<img src="assets/stackContinuous/6.jpg">
+							<img src="assets/stackContinuous/7.jpg">
+							<img src="assets/stackContinuous/8.jpg">
+						</div>
+						<div class="filmDots"></div>
+					</div>
+
+					<pre data-id="code">
+							<code data-line-numbers class="hljs" data-trim>
+								> stackContinuous 
+									--StackCount=20
+									--inputFolder=./my-awesome-timelapse 
+									--outputFile=stackedTimelapse 
+									--outputFolder=.
+							</code>
+						</pre>
+				</section>
+				<section>
+					<h3>From Video</h3>
+					<div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+						<video src="assets/timelapse.webm" style="max-height: 30vh; min-width: 30%;" autoplay
+							loop></video>
+						<h3 style="padding:1em;margin-bottom: 0;">→ </h3>
+						<video src="assets/continuous-20.webm" style="max-height: 30vh; min-width: 30%;" autoplay
+							loop></video>
+					</div>
+					<pre data-id="code">
+						<code data-line-numbers class="hljs" data-trim>
+							stackContinuous 
+									--StackCount=20
+									--inputFolder=./my-awesome-timelapse 
+									--outputFile=stackedTimelapse 
+									--outputFolder=tmp
+							ffmpeg -pattern_type 'glob' -i 'tmp/*.jpg' -
+						</code>
+					</pre>
+				</section>
+			</section>
+
+			<section>
+				<h1>StackProgressive</h1>
+				<section data-background-video="assets/progressive.webm" data-background-size="cover"
+					data-background-video-loop="true" data-background-video-muted="true"></section>
+				<section>
+					<h3>From Timelapse</h3>
+					<div class="filmCarrier">
+						<div class="filmDots"></div>
+						<div class="filmItems">
+							<img src="assets/stackProgressive/1.JPG">
+							<img src="assets/stackProgressive/2.JPG">
+							<img src="assets/stackProgressive/3.JPG">
+							<img src="assets/stackProgressive/4.JPG">
+							<img src="assets/stackProgressive/5.JPG">
+							<img src="assets/stackProgressive/6.JPG">
+							<img src="assets/stackProgressive/7.JPG">
+							<img src="assets/stackProgressive/8.JPG">
+						</div>
+						<div class="filmDots"></div>
+					</div>
+					<pre data-id="code">
+						<code class="hljs" data-trim>
+							> stackProgressive 
+								--inputFolder=./my-awesome-timelapse 
+								--outputFile=stackedTimelapse 
+								--outputFolder=.
+						</code>
+					</pre>
+				</section>
+			</section>
+
+
+			<section data-auto-animate data-auto-animate-unmatched="fade">
+				<h3>Command line parameters</h3>
+				<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+						Sorry work in progress...😒 
+					</code></pre>
+				<p>
+					Check me out on  
+					<a href="https://github.com/raspyweather/imageStacker">Github</a>
+				</p>
+			</section>
+
+		</div>
+
+	</div>
+
+	<script src="../dist/reveal.js"></script>
+	<script src="../plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			center: true,
+			hash: true,
+			plugins: [RevealHighlight]
+		});
+	</script>
+
+</body>
+
+</html>
