@@ -8,7 +8,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	
+
 	<link rel="stylesheet" href="dist/reveal.css">
 	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -99,6 +99,79 @@
 			</section>
 
 			<section>
+				<h3>Command line parameters</h3>
+				<section>
+					<h5>Verbs</h5>
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+						stackImage
+							Stacks all images together into one file
+						stackContinuous
+							Stacks every image with n of its successors, 
+							great for smoothing video
+						stackProgressive
+							Stacks every image with all its predecessors, 
+							great for showing progression, 
+							especially startrails
+					</code></pre>
+				</section>
+
+				<section>
+					<h5>DataInput</h5>
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+						--inputFolder
+							Path to folder with JPG files 
+							(sorry, no file extension filter implemented yet)
+						--inputFiles
+							List of files to use
+						--inputFromPipe
+							Experimental - Uses StdIn as input, 
+							requires --inputSize to be specified.
+							Currently only RGB24 is supported
+							limited usability in WSL due incredibly slow pipe speeds in WSL
+						--inputSize
+							Necessary option for --inputFromPipe otherwise ignored. 
+							Specifies width and height of piped frames.
+							Format: 1920x1080
+					</code></pre>
+				</section>
+
+				<section>
+					<h5>DataOutput</h5>
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+						--outputFile
+							Naming prefix for generated images
+						--outputFolder
+							Where to save generated images
+						--outputToPipe
+							Experimental - Uses StdOut as Output, 
+							might be used together with ffmpeg
+							Currently only RGB24 is supported
+							limited usability in WSL due incredibly slow pipe speeds in WSL
+					</code></pre>
+				</section>
+
+				<section>
+					<h5>Filters</h5>
+					<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+						maxFilter
+							Filters maximum value for each pixel, 
+							useful for stars, light trails
+						maxVecFilter
+							same as maxFilter,
+							AVX accelerated
+							might cause issues on some machines
+						minFilter
+							Filters minimum value for each pixel
+							useful for insects, birds etc.
+						minVecFilter
+							same as minFilter, 
+							AVX accelerated,
+							might cause issues on some machines					
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
 				<h1>StackImage</h1>
 				<section data-background-image="assets/stackImage1.png" data-background-size="cover">
 				</section>
@@ -121,15 +194,6 @@
 						</code>
 					</pre>
 				</section>
-				<section>
-					<h3>From Video</h3>
-					<pre data-id="code">
-						<code data-line-numbers class="hljs" data-trim>
-							ffmpeg -i ...
-						</code>
-					</pre>
-				</section>
-
 
 				<section data-auto-animate data-auto-animate-unmatched="fade">
 					<div class="galleryContainer">
@@ -261,14 +325,12 @@
 				</section>
 			</section>
 
-
 			<section data-auto-animate data-auto-animate-unmatched="fade">
-				<h3>Command line parameters</h3>
 				<pre data-id="code"><code data-line-numbers class="hljs" data-trim>
 						Sorry work in progress...😒 
 					</code></pre>
 				<p>
-					Check me out on  
+					Check me out on
 					<a href="https://github.com/raspyweather/imageStacker">Github</a>
 				</p>
 			</section>
